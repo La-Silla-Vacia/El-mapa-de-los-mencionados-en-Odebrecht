@@ -1,7 +1,12 @@
 'use strict';
 import React from 'react';
 import cx from 'classnames';
-// import ReactMarkdown from 'react-markdown';
+const MarkdownIt = require('markdown-it'),
+  md = new MarkdownIt({
+    html: true,
+    linkify: true,
+    typographer: true
+  });
 require('styles/PersonRow.scss');
 
 class PersonRowComponent extends React.Component {
@@ -20,24 +25,12 @@ class PersonRowComponent extends React.Component {
     this.props.callback(this.props.id, 'bio');
   }
 
-  format(text) {
-    return ((text || ''))  // make sure it is a string;
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/\t/g, '    ')
-      .replace(/ /g, '&#8203;&nbsp;&#8203;')
-      .replace(/\r\n|\r|\n/g, '<br />');
-  }
-
   render() {
     let importanceOfTalking = this.props.importanceOfTalking;
     if (!importanceOfTalking) importanceOfTalking = 'Sin definir';
 
     let bio = this.props.bio;
     if (!bio) bio = 'Sin definir';
-
-    bio = this.format(bio);
 
     return (
       <div className={cx(
@@ -80,7 +73,8 @@ class PersonRowComponent extends React.Component {
           <div className="PersonRow__explainer__triangle" />
           <div className="col-sm-7">
             <h3>{this.props.name}</h3>
-            <div dangerouslySetInnerHTML={{__html: bio}}/>
+            <div dangerouslySetInnerHTML={{__html: md.render(bio)}}>
+            </div>
           </div>
           <div className="col-sm-5">
             <ul className="PersonRow__explainer__meaning">
@@ -98,15 +92,15 @@ class PersonRowComponent extends React.Component {
               </li>
               <li className="PersonRow__explainer__item">
                 <h6>Relación con el escándalo</h6>
-                {this.props.scandalRelationship}
+                <div dangerouslySetInnerHTML={{__html: md.render(this.props.scandalRelationship)}} />
               </li>
               <li className="PersonRow__explainer__item">
                 <h6>Importancia de que hable</h6>
-                {this.props.importanceOfTalking}
+                <div dangerouslySetInnerHTML={{__html: md.render(this.props.importanceOfTalking)}} />
               </li>
               <li className="PersonRow__explainer__item">
                 <h6>Lo que podría pasar</h6>
-                {this.props.whatCouldHappen}
+                <div dangerouslySetInnerHTML={{__html: md.render(this.props.whatCouldHappen)}} />
               </li>
             </ul>
           </div>

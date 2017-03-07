@@ -4,7 +4,6 @@
   .PersonRow {
     width: 100%;
     position: relative;
-    cursor: pointer;
 
     &:nth-child(2n) .PersonRow__columns {
       background-color: $itterationColor;
@@ -60,6 +59,7 @@
       flex: row nowrap;
       position: relative;
       z-index: 2;
+      cursor: pointer;
     }
 
     &__column {

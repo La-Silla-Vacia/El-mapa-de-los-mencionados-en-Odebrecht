@@ -160,7 +160,7 @@ class AppComponent extends React.Component {
 
     const rows = this.getRows().filter(function(e){return e});
     let nothingMessage;
-    if (!rows.length) {
+    if (!rows.length && this.state.loading) {
       nothingMessage = (<h3 style={{padding: 16, fontSize: '1.25em'}}>Esta búsqueda no tiene resultados. Por favor seleccione otro filtro.</h3>);
     }
 

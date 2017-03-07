@@ -52,7 +52,6 @@
     }
 
     &__heading {
-      cursor: default;
       h2 {
         font-family: Roboto Slab, Roboto, Helvetica, sans-serif;
         font-size: 1em;
@@ -63,6 +62,9 @@
       }
       &:hover .PersonRow__columns {
         background-color: transparent;
+      }
+      .PersonRow__columns {
+        cursor: default;
       }
     }
 
