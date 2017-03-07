@@ -1,0 +1,61 @@
+@import "variables";
+
+.article-sidebar {
+ display: none;
+}
+
+.article-content {
+  width: 100%;
+  max-width: 1130px;
+  margin-left: 0;
+}
+
+#silla-interactive-container {
+  font-size: 16px;
+  line-height: 1.5;
+
+  .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .lsvi_container {
+    width: 100%;
+    max-width: 1130px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding-top: 48px;
+
+    &__title {
+      font-family: Georgia, serif;
+      text-transform: none;
+      font-size: 48px;
+      padding-bottom: 20px;
+      font-weight: 700;
+      max-width: 700px;
+      margin: 0 auto 1em;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+
+    &__select {
+      small {
+        display: block;
+        color: $brand-color;
+      }
+    }
+
+    &__selects {
+      margin: 1em 0;
+    }
+
+    .Select {
+      font-size: 1em;
+      position: relative;
+      z-index: 10;
+      margin: 0;
+      width: 80%;
+    }
+  }
+}

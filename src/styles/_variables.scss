@@ -1,0 +1,43 @@
+$brand-color: #44a5db;
+$brand-grey: #6f7372;
+$brand-lightgrey: #F8F8F8;
+$brand-lightgrey-dark: #979797;
+$brand-black: #444848;
+$brand-white: #fff;
+$text-color: $brand-black;
+$font-family-base: 'Roboto', Helvetica, sans-serif;
+$font-family-display: 'Roboto Slab', Georgia, sans-serif;
+$font-family-serif: 'Georgia', Times new roman, serif;
+$max-content-width: 60em;
+$transition-duration: 0.2s;
+$transition-delay: 0.6s;
+
+$itterationColor: rgba(200, 200, 200, .2);
+$hoverColor: rgba(200, 200, 200, .5);
+
+/*
+ * Layout
+ * ======================================================================== */
+
+$buttonSize: 1.25em;
+$innerButtonSize: 0.75em;
+
+$mobileButtonsSize: 2em;
+$mobileInnerButtonSize: 1.25em;
+
+/*
+ * Media queries breakpoints
+ * ======================================================================== */
+
+$screen-xs-min: 30rem;  /* Extra small screen / phone */
+$screen-sm-min: 48rem;  /* Small screen / tablet */
+$screen-md-min: 992px;  /* Medium screen / desktop */
+$screen-lg-min: 75rem; /* Large screen / wide desktop */
+$breakpoint: 625px;
+
+$wrong-red: #D32F2F;
+$good-green: #43a047;
+
+
+$wrong-bg-red: #FFEBEE;
+$good-bg-green: #E8F5E9;

@@ -1,0 +1,229 @@
+@import "variables";
+
+#silla-interactive-container {
+  .PersonRow {
+    width: 100%;
+    position: relative;
+
+    &:nth-child(2n) .PersonRow__columns {
+      background-color: $itterationColor;
+    }
+
+    &:hover .PersonRow__columns {
+      background-color: $hoverColor;
+    }
+
+    &--severity-13 {
+      color: #6ED208;
+    }
+    &--severity-12 {
+      color: #E11332;
+    }
+    &--severity-11 {
+      color: #DF1315;
+    }
+    &--severity-10 {
+      color: #DE2B12;
+    }
+    &--severity-9 {
+      color: #DD4611;
+    }
+    &--severity-8 {
+      color: #DC6110;
+    }
+    &--severity-7 {
+      color: #DB7C0F;
+    }
+    &--severity-6 {
+      color: #DA970E;
+    }
+    &--severity-5 {
+      color: #D8B20D;
+    }
+    &--severity-4 {
+      color: #D7CD0C;
+    }
+    &--severity-3 {
+      color: #C4D60B;
+    }
+    &--severity-2 {
+      color: #A7D50A;
+    }
+    &--severity-1 {
+      color: #8AD409;
+    }
+
+    &__columns {
+      width: 100%;
+      display: flex;
+      flex: row nowrap;
+      position: relative;
+      z-index: 2;
+    }
+
+    &__column {
+      width: 30%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      background: none;
+      border: none;
+      padding: .75em 1em;
+      &:first-child {
+        padding: 0;
+        width: 40%;
+      }
+      &:focus {
+        outline: none;
+        border-left: 1px solid $brand-color;
+      }
+
+      @media screen and (max-width: 660px) {
+        &:first-child {
+          width: 60%;
+        }
+      }
+    }
+
+    &__inner {
+      text-align: left;
+      display: flex;
+      align-items: center;
+    }
+
+    &__inner-text {
+      line-height: 1;
+    }
+
+    &__photo-container {
+      margin: 1em;
+      position: relative;
+      width: 4em !important;
+      height: 4em !important;
+      border-radius: 50%;
+      overflow: hidden;
+      &::before {
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: currentColor;
+        opacity: .5;
+
+      }
+    }
+
+    &__photo {
+      border-radius: 50%;
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    &__heading3 {
+      font-family: Roboto Slab, Roboto, Helvetica, sans-serif;
+      margin-bottom: 0;
+      margin-top: 0;
+      font-size: 1em;
+      font-weight: 700;
+    }
+
+    &__text {
+      line-height: 1;
+      font-size: .8em;
+    }
+
+    &--open .PersonRow__columns {
+      background-color: $hoverColor;
+    }
+
+    &__explainer {
+      width: 100%;
+      background-color: $brand-white;
+      color: $brand-black;
+      padding: 2em;
+      z-index: 4;
+      display: none;
+      position: relative;
+      border: 1px solid $brand-lightgrey-dark;
+      margin: 0;
+      @media screen and (max-width: 600px) {
+        padding: 1em;
+      }
+
+      &--open {
+        display: block;
+      }
+
+      &__triangle {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-left: .5em solid transparent;
+        border-right: .5em solid transparent;
+        border-bottom: .5em solid $brand-white;
+        top: -.5em;
+        left: 2.5em;
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-left: .5em solid transparent;
+        border-right: .5em solid transparent;
+        border-bottom: .5em solid $brand-lightgrey-dark;
+        top: -.576em;
+        left: 2.5em;
+      }
+
+      h3 {
+        font-family: Roboto Slab, Roboto, Helvetica, sans-serif;
+        font-weight: 700;
+        margin-left: 15px;
+        text-align: right;
+        margin-bottom: 1em;
+      }
+    }
+
+    &__explainer__inner {
+      max-width: 40em;
+    }
+
+    &__explainer__meaning {
+      margin-bottom: 1em;
+      border: 1px solid $brand-lightgrey-dark;
+      list-style: none;
+      padding-left: 1em;
+      span {
+        background-color: currentColor;
+        width: .75em;
+        height: .75em;
+        display: inline-block;
+        border-radius: 100%;
+        margin-right: .5em;
+      }
+    }
+
+    &__explainer__item {
+      margin-right: 1em;
+      padding: .5em 0;
+      border-bottom: 1px solid $brand-lightgrey-dark;
+      &:last-child {
+        border-bottom: none;
+      }
+
+      h6 {
+        font-weight: 700;
+        text-transform: uppercase;
+        font-family: Lato, sans-serif;
+        color: $brand-color;
+        font-size: 11px;
+        margin-bottom: 0;
+      }
+    }
+  }
+}

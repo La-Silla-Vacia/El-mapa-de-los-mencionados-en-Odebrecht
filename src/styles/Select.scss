@@ -1,0 +1,105 @@
+@import 'variables';
+
+.Select {
+  border: 1px solid #2d3132;
+  border-radius: 5px;
+  font-size: 0.7em;
+  padding: 0.21em 1.75em 0.15em 0.75em;
+  display: inline-block;
+  cursor: pointer;
+  text-align: left;
+  height: 1.5em;
+  position: relative;
+  width: 10em;
+  margin: -0.5em 0.25em;
+  font-family: var(--font-family-base);
+  font-weight: 300;
+  z-index: 10;
+  white-space: nowrap;
+  box-sizing: content-box;
+  line-height: 1.5;
+  &::after {
+    content: '';
+    position: absolute;
+    width: 0.5em;
+    height: 0.5em;
+    right: 0.75em;
+    top: 0.875em;
+    transform: rotate(45deg);
+    transition: $transition-duration;
+    border-left: 1px solid $brand-black;
+    border-top: 1px solid $brand-black;
+  }
+
+  &:focus {
+    outline: none;
+    background-color: var(--brand-lightgrey);
+  }
+
+  &__open::after {
+    transform: rotate(-135deg);
+    top: 0.5em;
+  }
+
+  &__open .Select__inner {
+    display: block;
+    max-height: 24em;
+  }
+
+  &__inner {
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    border: 1px solid #2d3132;
+    width: calc(100% + 2px);
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #fff;
+    max-height: 2em;
+    overflow: hidden;
+    transition: max-height var(--transition-duration) ease;
+    display: none;
+  }
+
+  .option__selected {
+    color: red;
+    display: block;
+  }
+
+  .option:first-child {
+    color: $brand-black;
+  }
+
+  .option {
+    color: $brand-grey;
+    padding: 0;
+    background: none;
+    border: none;
+    font-weight: 300;
+    width: calc(100% - 2.5em);
+    text-align: left;
+    min-height: 2em;
+    border-bottom: 1px solid $brand-grey;
+    margin-right: 1.75em;
+    margin-left: 0.75em;
+    cursor: pointer;
+    display: block;
+  }
+
+  .option:last-child {
+    border-bottom: 0;
+  }
+
+  .option:focus {
+    outline: none;
+  }
+
+  &__open .option:hover {
+    color: $brand-black;
+  }
+
+  &__open .option:focus {
+    background-color: $brand-lightgrey;
+    box-shadow: -0.75em 0 $brand-lightgrey, 1.75em 0 $brand-lightgrey;
+  }
+}
