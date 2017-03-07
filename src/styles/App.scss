@@ -1,7 +1,7 @@
 @import "variables";
 
 .article-sidebar {
- display: none;
+  display: none;
 }
 
 .article-content {
@@ -13,6 +13,8 @@
 #silla-interactive-container {
   font-size: 16px;
   line-height: 1.5;
+  max-width: 1013px;
+  margin: 0 auto 4em;
 
   .row {
     margin-left: 0;
@@ -38,7 +40,6 @@
       text-align: center;
     }
 
-
     &__select {
       small {
         display: block;
@@ -50,12 +51,32 @@
       margin: 1em 0;
     }
 
+    &__heading {
+      cursor: default;
+      h2 {
+        font-family: Roboto Slab, Roboto, Helvetica, sans-serif;
+        font-size: 1em;
+        margin: 0;
+      }
+      .PersonRow__column:first-child {
+        padding-left: 6em;
+      }
+      &:hover .PersonRow__columns {
+        background-color: transparent;
+      }
+    }
+
     .Select {
       font-size: 1em;
       position: relative;
       z-index: 10;
       margin: 0;
       width: 80%;
+      background-color: #fff;
+    }
+
+    .Select__open {
+      z-index: 1000;
     }
   }
 }

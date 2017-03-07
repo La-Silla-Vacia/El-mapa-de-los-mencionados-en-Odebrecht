@@ -3,6 +3,7 @@ require('styles/App.scss');
 
 import React from 'react';
 import 'whatwg-fetch';
+import cx from 'classnames';
 import Select from './SelectComponent';
 import PersonRow from './PersonRowComponent';
 
@@ -17,16 +18,16 @@ class AppComponent extends React.Component {
       error: false,
       openRow: {},
       concreteCases: [],
-      mentions: [],
+      importance: [],
       stateOfAttorney: [],
-      concreteCaseFilter: '',
-      mentionsFilter: '',
-      stateOfAttorneyFilter: ''
+      concreteCaseFilter: 'Todos',
+      importanceFilter: 'Todos',
+      stateOfAttorneyFilter: 'Todos'
     };
 
     this.rowCallback = this.rowCallback.bind(this);
     this.switchOption = this.switchOption.bind(this);
-    this.switchMentionsOption = this.switchMentionsOption.bind(this);
+    this.switchImportanceOption = this.switchImportanceOption.bind(this);
     this.switchAtternoyOption = this.switchAtternoyOption.bind(this);
   }
 
@@ -42,15 +43,14 @@ class AppComponent extends React.Component {
 
       this.formatData(json);
     }).catch((ex) => {
-      console.log('parsing failed', ex);
-      this.setState({error: 'Could not get the data. Please try again later'});
+      this.setState({error: 'Could not get the data. Please try again later' + ex});
     });
   }
 
   formatData(data) {
     const newData = [];
     const concreteCases = ['Todos'];
-    const mentions = ['Todos'];
+    const importance = ['Todos'];
     const stateOfAttorney = ['Todos'];
 
     data.map((item) => {
@@ -81,8 +81,8 @@ class AppComponent extends React.Component {
       if (concreteCases.indexOf(newItem.concreteCase2) == -1 && newItem.concreteCase2.length) {
         concreteCases.push(newItem.concreteCase2);
       }
-      if (mentions.indexOf(newItem.mentions) == -1) {
-        mentions.push(newItem.mentions);
+      if (importance.indexOf(newItem.importanceOfTalking) == -1) {
+        if (newItem.importanceOfTalking) importance.push(newItem.importanceOfTalking);
       }
       if (stateOfAttorney.indexOf(newItem.stateOfAttorney) == -1) {
         stateOfAttorney.push(newItem.stateOfAttorney);
@@ -92,7 +92,7 @@ class AppComponent extends React.Component {
       data: newData,
       loading: false,
       concreteCases: concreteCases,
-      mentions: mentions,
+      importance: importance,
       stateOfAttorney: stateOfAttorney
     });
   }
@@ -113,16 +113,16 @@ class AppComponent extends React.Component {
         }
       }
 
-      if (this.state.concreteCaseFilter
-        && (this.state.concreteCaseFilter !== item.concreteCase && this.state.concreteCaseFilter !== item.concreteCase2)) {
+      if (this.state.concreteCaseFilter !== item.concreteCase &&
+        this.state.concreteCaseFilter !== item.concreteCase2) {
         if (this.state.concreteCaseFilter !== 'Todos') return;
       }
 
-      if (this.state.mentionsFilter && this.state.mentionsFilter !== item.mentions) {
-        if (this.state.mentionsFilter !== 'Todos') return;
+      if (this.state.importanceFilter !== item.importanceOfTalking) {
+        if (this.state.importanceFilter !== 'Todos') return;
       }
 
-      if (this.state.stateOfAttorneyFilter && this.state.stateOfAttorneyFilter !== item.stateOfAttorney) {
+      if (this.state.stateOfAttorneyFilter !== item.stateOfAttorney) {
         if (this.state.stateOfAttorneyFilter !== 'Todos') return;
       }
 
@@ -142,8 +142,8 @@ class AppComponent extends React.Component {
     this.setState({concreteCaseFilter: result});
   }
 
-  switchMentionsOption(result) {
-    this.setState({mentionsFilter: result});
+  switchImportanceOption(result) {
+    this.setState({importanceFilter: result});
   }
 
   switchAtternoyOption(result) {
@@ -158,11 +158,16 @@ class AppComponent extends React.Component {
       )
     }
 
-    const rows = this.getRows();
+    const rows = this.getRows().filter(function(e){return e});
+    let nothingMessage;
+    if (!rows.length) {
+      nothingMessage = (<h3 style={{padding: 16, fontSize: '1.25em'}}>Esta búsqueda no tiene resultados. Por favor seleccione otro filtro.</h3>);
+    }
+
     return (
       <div className="lsvi_container">
 
-        <h1 className="lsvi_container__title">El mapa de los mencionados en Odebrecht</h1>
+        {/*<h1 className="lsvi_container__title">El mapa de los mencionados en Odebrecht</h1>*/}
         {error}
 
         <div className="lsvi_container__selects row">
@@ -178,16 +183,6 @@ class AppComponent extends React.Component {
           </div>
 
           <div className="lsvi_container__select col-sm-3">
-            <small>Por mencionados</small>
-            <Select
-              className='Select'
-              value="Todos"
-              callback={this.switchMentionsOption}
-              options={this.state.mentions}
-            />
-          </div>
-
-          <div className="lsvi_container__select col-sm-3">
             <small>Por estado en la fiscalía</small>
             <Select
               className="Select"
@@ -196,8 +191,36 @@ class AppComponent extends React.Component {
               options={this.state.stateOfAttorney}
             />
           </div>
+
+          <div className="lsvi_container__select col-sm-3">
+            <small>Por importancia de que hable</small>
+            <Select
+              className='Select'
+              value="Todos"
+              callback={this.switchImportanceOption}
+              options={this.state.importance}
+            />
+          </div>
         </div>
 
+        <div className={cx(
+          'PersonRow',
+          'lsvi_container__heading'
+        )}>
+          <div className="PersonRow__columns">
+            <div className="PersonRow__column">
+              <h2>Nombre</h2>
+            </div>
+            <div className="PersonRow__column">
+              <h2>Estado en la Fiscalía</h2>
+            </div>
+            <div className="PersonRow__column">
+              <h2>Importancia de que hable</h2>
+            </div>
+          </div>
+        </div>
+
+        {nothingMessage}
         {rows}
       </div>
     );

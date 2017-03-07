@@ -48,7 +48,7 @@ class PersonRowComponent extends React.Component {
           <button onClick={this.openBio} className="PersonRow__column">
             <div className="PersonRow__inner">
               <figure className={cx(
-                "PersonRow__photo-container",
+                'PersonRow__photo-container',
                 `PersonRow--severity-${this.props.severity}`
               )}>
                 <img className="PersonRow__photo" src={this.props.photo} alt={this.props.name}/>
@@ -68,18 +68,21 @@ class PersonRowComponent extends React.Component {
           <div className="PersonRow__column">
             <span className="PersonRow__text">{this.props.stateOfAttorney}</span>
           </div>
+          <div className="PersonRow__column">
+            <span className="PersonRow__text">{this.props.importanceOfTalking}</span>
+          </div>
         </div>
         <div className={cx(
-          "PersonRow__explainer",
-          "row",
-          {"PersonRow__explainer--open": this.props.open.type == 'bio'}
+          'PersonRow__explainer',
+          'row',
+          {'PersonRow__explainer--open': this.props.open.type == 'bio'}
         )}>
           <div className="PersonRow__explainer__triangle" />
-          <div className="col-sm-7 col-md-8">
+          <div className="col-sm-7">
             <h3>{this.props.name}</h3>
             <div dangerouslySetInnerHTML={{__html: bio}}/>
           </div>
-          <div className="col-sm-5 col-md-4">
+          <div className="col-sm-5">
             <ul className="PersonRow__explainer__meaning">
               <li className="PersonRow__explainer__item">
                 <h6>Estado en la fiscalía</h6>
@@ -92,10 +95,6 @@ class PersonRowComponent extends React.Component {
                 <h6>Caso concreto</h6>
                 {this.props.concreteCase} <br />
                 {this.props.concreteCase2}
-              </li>
-              <li className="PersonRow__explainer__item">
-                <h6>Mencionados</h6>
-                {this.props.mentions}
               </li>
               <li className="PersonRow__explainer__item">
                 <h6>Relación con el escándalo</h6>

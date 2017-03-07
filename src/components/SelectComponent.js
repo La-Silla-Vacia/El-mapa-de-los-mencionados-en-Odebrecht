@@ -13,7 +13,7 @@ class SelectComponent extends React.Component {
 
     this.state = {
       open: false,
-      currentOption: "",
+      currentOption: '',
       options: []
     };
 
@@ -80,7 +80,7 @@ class SelectComponent extends React.Component {
   }
 
   openSelect(e) {
-    if (e.type === "keydown") {
+    if (e.type === 'keydown') {
       if (e.keyCode === 13) {
         this.setState({open: !this.state.open});
       }
