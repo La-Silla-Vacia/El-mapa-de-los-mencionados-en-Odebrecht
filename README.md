@@ -102,3 +102,13 @@ Contributions are welcomed. When submitting a bugfix, write a test that exposes 
 
 ### Running Tests
 `npm test` or `node node_modules/.bin/mocha`
+
+### Deploy to github pages
+`git stpp dist origin gh-pages`
+
+```
+npm run dist
+git add dist && git commit -m "Initial dist subtree commit"
+git subtree push --prefix dist origin gh-pages
+
+```

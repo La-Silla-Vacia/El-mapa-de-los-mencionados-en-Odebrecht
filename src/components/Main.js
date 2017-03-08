@@ -160,8 +160,10 @@ class AppComponent extends React.Component {
 
     const rows = this.getRows().filter(function(e){return e});
     let nothingMessage;
-    if (!rows.length && this.state.loading) {
+    if (!rows.length && !this.state.loading) {
       nothingMessage = (<h3 style={{padding: 16, fontSize: '1.25em'}}>Esta búsqueda no tiene resultados. Por favor seleccione otro filtro.</h3>);
+    } else if (rows.length && this.state.length) {
+      nothingMessage = (<h3 style={{padding: 16, fontSize: '1.25em'}}>Cargando visualización...</h3>);
     }
 
     return (
@@ -173,7 +175,7 @@ class AppComponent extends React.Component {
         <div className="lsvi_container__selects row">
 
           <div className="lsvi_container__select col-sm-3">
-            <small>Por caso concreto</small>
+            <small>Filtre por caso concreto</small>
             <Select
               className='Select'
               value="Todos"
@@ -183,7 +185,7 @@ class AppComponent extends React.Component {
           </div>
 
           <div className="lsvi_container__select col-sm-3">
-            <small>Por estado en la fiscalía</small>
+            <small>Filtre por estado en la fiscalía</small>
             <Select
               className="Select"
               value="Todos"
@@ -193,7 +195,7 @@ class AppComponent extends React.Component {
           </div>
 
           <div className="lsvi_container__select col-sm-3">
-            <small>Por importancia de que hable</small>
+            <small>Filtre por importancia de que hable</small>
             <Select
               className='Select'
               value="Todos"

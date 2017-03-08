@@ -72,6 +72,11 @@ class PersonRowComponent extends React.Component {
         )}>
           <div className="PersonRow__explainer__triangle" />
           <div className="col-sm-7">
+            <button className="PersonRow__explainer__close-btn" onClick={this.openBio}>
+              <svg width="41px" height="41px" viewBox="545 936 41 41" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                <polygon id="Page-1" stroke="none" points="585.513587 938.104807 583.892261 936.483481 565.258261 955.120414 546.621327 936.483481 545 938.104807 563.636934 956.741741 545 975.378674 546.621327 977 565.258261 958.363067 583.892261 977 585.513587 975.378674 566.879587 956.741741" />
+              </svg>
+            </button>
             <h3>{this.props.name}</h3>
             <div dangerouslySetInnerHTML={{__html: md.render(bio)}}>
             </div>

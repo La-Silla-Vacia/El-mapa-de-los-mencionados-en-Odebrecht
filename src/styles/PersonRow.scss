@@ -100,8 +100,8 @@
     &__photo-container {
       margin: .5em 1em;
       position: relative;
-      width: 3em !important;
-      height: 3em !important;
+      width: 40px !important;
+      height: 40px !important;
       border-radius: 50%;
       overflow: hidden;
       &::before {
@@ -169,7 +169,7 @@
         border-right: .5em solid transparent;
         border-bottom: .5em solid $brand-white;
         top: -.5em;
-        left: 2.5em;
+        left: 1.9em;
       }
 
       &::before {
@@ -181,7 +181,7 @@
         border-right: .5em solid transparent;
         border-bottom: .5em solid $brand-lightgrey-dark;
         top: -.576em;
-        left: 2.5em;
+        left: 1.9em;
       }
 
       h3 {
@@ -190,6 +190,26 @@
         margin-left: 15px;
         text-align: right;
         margin-bottom: 1em;
+      }
+
+      &__close-btn {
+        position: absolute;
+        width: 1em;
+        height: 1em;
+        background: none;
+        border: 0;
+        top: 6px;
+        padding: 0;
+        svg {
+          max-width: 100%;
+          height: auto;
+          fill: $brand-lightgrey-dark
+        }
+        &:hover {
+          svg {
+            fill: $brand-black;
+          }
+        }
       }
     }
 

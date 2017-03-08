@@ -10,6 +10,15 @@
   margin-left: 0;
 }
 
+.section-paz .title h2 {
+  color: #444848;
+  font-family: 'Roboto Slab', serif;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
 #silla-interactive-container {
   font-size: 16px;
   line-height: 1.5;
@@ -43,7 +52,12 @@
     &__select {
       small {
         display: block;
-        color: $brand-color;
+        color: $brand-black;
+      }
+      @media screen and (min-width: 1066px) {
+        &:first-child {
+          padding-left: 0;
+        }
       }
     }
 
@@ -52,16 +66,24 @@
     }
 
     &__heading {
+      background: $colorprimary;
       h2 {
-        font-family: Roboto Slab, Roboto, Helvetica, sans-serif;
-        font-size: 1em;
+        font-family: Lato, Roboto, Helvetica, sans-serif;
         margin: 0;
+        color: #fff;
+        font-size: 7.3pt;
+        display: inline-block;
+        border-radius: 3px;
+        letter-spacing: 1px;
+        text-decoration: none;
+        text-transform: uppercase;
       }
       .PersonRow__column:first-child {
-        padding-left: 6em;
+        padding-left: 5em;
       }
-      &:hover .PersonRow__columns {
-        background-color: transparent;
+      &:hover .PersonRow__columns,
+      .PersonRow__columns {
+        background-color: transparent !important;
       }
       .PersonRow__columns {
         cursor: default;
