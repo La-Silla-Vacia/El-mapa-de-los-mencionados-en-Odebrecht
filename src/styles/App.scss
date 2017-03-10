@@ -9,7 +9,9 @@
   max-width: 1130px;
   margin-left: 0;
 }
-
+.title-paz h2 {
+  width: 35%;
+}
 .section-paz .title h2 {
   color: #444848;
   font-family: 'Roboto Slab', serif;
@@ -48,8 +50,26 @@
     background-color: #fff;
 
     &__select-container {
-      margin-top: 40px;
+      margin-top: 72px;
       padding-left: 0;
+    }
+
+    &__legend {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      column-count: 2;
+      max-width: 30em;
+      float: right;
+      font-size: .85em;
+      span {
+        width: .75em;
+        height: .75em;
+        background-color: currentColor;
+        display: inline-block;
+        border-radius: 50%;
+        margin-right: 1em;
+      }
     }
 
     &__title {
@@ -65,15 +85,16 @@
     }
 
     &__select {
-      float: right;
-      clear: both;
+      float: left;
+      margin-top: 1.5em;
       margin-bottom: .5em;
-      text-align: right;
-      width: 100%;
+      text-align: left;
+      position: relative;
       > h3 {
         font-family: Roboto Slab, Georgia, sans-serif;
         font-size: 1em;
       }
+
       small {
         display: inline-block;
         color: $brand-black;
@@ -87,7 +108,7 @@
     }
 
     &__selects {
-      margin: 1em 0;
+      margin: 1em 0 0;
 
     }
 
@@ -121,8 +142,7 @@
       position: relative;
       z-index: 10;
       margin: 0;
-      width: 100%;
-      max-width: 200px;
+      width: calc(100% - 2em);
       background-color: #fff;
     }
 
