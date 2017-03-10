@@ -73,7 +73,6 @@ class AppComponent extends React.Component {
       };
       newData.push(newItem);
 
-      console.log(newItem);
       if (concreteCases.indexOf(newItem.concreteCase) == -1 && newItem.concreteCase.length) {
         concreteCases.push(newItem.concreteCase);
       }
