@@ -205,7 +205,7 @@ class AppComponent extends React.Component {
           </div>
           <div className="col-sm-12">
             <div className="lsvi_container__select col-sm-4">
-              <small>Filtre por aso concreto</small>
+              <small>Filtre por caso concreto</small>
               <Select
                 className='Select'
                 value="Todos"
