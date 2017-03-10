@@ -32,6 +32,7 @@ class PersonRowComponent extends React.Component {
     let bio = this.props.bio;
     if (!bio) bio = 'Sin definir';
 
+
     return (
       <div className={cx(
         'PersonRow',
@@ -101,7 +102,7 @@ class PersonRowComponent extends React.Component {
               </li>
               <li className="PersonRow__explainer__item">
                 <h6>Importancia de que hable</h6>
-                <div dangerouslySetInnerHTML={{__html: md.render(this.props.importanceOfTalking)}} />
+                <div dangerouslySetInnerHTML={{__html: md.render(importanceOfTalking) }} />
               </li>
               <li className="PersonRow__explainer__item">
                 <h6>Lo que podría pasar</h6>

@@ -24,10 +24,21 @@
   line-height: 1.5;
   max-width: 1013px;
   margin: 0 auto 4em;
+  border-top: 1px solid #ddd;
+  padding-top: 60px;
 
   .row {
     margin-left: 0;
     margin-right: 0;
+  }
+
+  .section-paz {
+    padding-top: 0;
+    padding-left: 15px;
+    border-top: 0;
+    p {
+      font-size: 14px;
+    }
   }
 
   .lsvi_container {
@@ -35,7 +46,11 @@
     max-width: 1130px;
     margin: 0 auto;
     background-color: #fff;
-    padding-top: 48px;
+
+    &__select-container {
+      margin-top: 40px;
+      padding-left: 0;
+    }
 
     &__title {
       font-family: Georgia, serif;
@@ -50,19 +65,30 @@
     }
 
     &__select {
+      float: right;
+      clear: both;
+      margin-bottom: .5em;
+      text-align: right;
+      width: 100%;
+      > h3 {
+        font-family: Roboto Slab, Georgia, sans-serif;
+        font-size: 1em;
+      }
       small {
-        display: block;
+        display: inline-block;
         color: $brand-black;
+        margin-right: 1em;
       }
       @media screen and (min-width: 1066px) {
         &:first-child {
-          padding-left: 0;
+          //padding-left: 0;
         }
       }
     }
 
     &__selects {
       margin: 1em 0;
+
     }
 
     &__heading {
@@ -95,7 +121,8 @@
       position: relative;
       z-index: 10;
       margin: 0;
-      width: 80%;
+      width: 100%;
+      max-width: 200px;
       background-color: #fff;
     }
 

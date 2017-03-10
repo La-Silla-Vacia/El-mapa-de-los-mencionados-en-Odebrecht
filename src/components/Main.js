@@ -40,7 +40,6 @@ class AppComponent extends React.Component {
       .then((response) => {
         return response.json()
       }).then((json) => {
-
       this.formatData(json);
     }).catch((ex) => {
       this.setState({error: 'Could not get the data. Please try again later' + ex});
@@ -54,7 +53,6 @@ class AppComponent extends React.Component {
     const stateOfAttorney = ['Todos'];
 
     data.map((item) => {
-
       let photo = item.foto;
       if (!photo) {
         photo = 'http://archivo.lasillavacia.com/archivos/historias/clientelismo2017/padrinos/36.jpg';
@@ -69,12 +67,13 @@ class AppComponent extends React.Component {
         mentions: item.mencionados,
         stateOfAttorney: item.estadoEnLaFiscalia,
         scandalRelationship: item.relacionConElEscandalo,
-        importanceOfTalking: item.importanciaDeQueHable,
+        importanceOfTalking: item.impactoSiHablara,
         whatCouldHappen: item.loQuePodriaPasar,
         severity: item.gravedad
       };
       newData.push(newItem);
 
+      console.log(newItem);
       if (concreteCases.indexOf(newItem.concreteCase) == -1 && newItem.concreteCase.length) {
         concreteCases.push(newItem.concreteCase);
       }
@@ -158,10 +157,14 @@ class AppComponent extends React.Component {
       )
     }
 
-    const rows = this.getRows().filter(function(e){return e});
+    const rows = this.getRows().filter(function (e) {
+      return e
+    });
     let nothingMessage;
     if (!rows.length && !this.state.loading) {
-      nothingMessage = (<h3 style={{padding: 16, fontSize: '1.25em'}}>Esta búsqueda no tiene resultados. Por favor seleccione otro filtro.</h3>);
+      nothingMessage = (
+        <h3 style={{padding: 16, fontSize: '1.25em'}}>Esta búsqueda no tiene resultados. Por favor seleccione otro
+          filtro.</h3>);
     } else if (rows.length && this.state.length) {
       nothingMessage = (<h3 style={{padding: 16, fontSize: '1.25em'}}>Cargando visualización...</h3>);
     }
@@ -173,35 +176,50 @@ class AppComponent extends React.Component {
         {error}
 
         <div className="lsvi_container__selects row">
+          <div className="section-paz col-sm-4">
+            <div className="title"><span>&nbsp;</span>
+              <h2>Así quedaron<br />
+                los acuerdos</h2>
 
-          <div className="lsvi_container__select col-sm-3">
-            <small>Filtre por caso concreto</small>
-            <Select
-              className='Select'
-              value="Todos"
-              callback={this.switchOption}
-              options={this.state.concreteCases}
-            />
+              <p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit
+                amet risus. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+            </div>
           </div>
 
-          <div className="lsvi_container__select col-sm-3">
-            <small>Filtre por estado en la fiscalía</small>
-            <Select
-              className="Select"
-              value="Todos"
-              callback={this.switchAtternoyOption}
-              options={this.state.stateOfAttorney}
-            />
-          </div>
+          <div className="col-sm-8 lsvi_container__select-container">
 
-          <div className="lsvi_container__select col-sm-3">
-            <small>Filtre por importancia de que hable</small>
-            <Select
-              className='Select'
-              value="Todos"
-              callback={this.switchImportanceOption}
-              options={this.state.importance}
-            />
+            <div className="lsvi_container__select col-sm-12">
+              <h3>Filtre por</h3>
+            </div>
+            <div className="lsvi_container__select col-sm-12">
+              <small>Caso concreto</small>
+              <Select
+                className='Select'
+                value="Todos"
+                callback={this.switchOption}
+                options={this.state.concreteCases}
+              />
+            </div>
+
+            <div className="lsvi_container__select col-sm-12">
+              <small>Estado en la fiscalía</small>
+              <Select
+                className="Select"
+                value="Todos"
+                callback={this.switchAtternoyOption}
+                options={this.state.stateOfAttorney}
+              />
+            </div>
+
+            <div className="lsvi_container__select col-sm-12">
+              <small>Importancia de que hable</small>
+              <Select
+                className='Select'
+                value="Todos"
+                callback={this.switchImportanceOption}
+                options={this.state.importance}
+              />
+            </div>
           </div>
         </div>
 
