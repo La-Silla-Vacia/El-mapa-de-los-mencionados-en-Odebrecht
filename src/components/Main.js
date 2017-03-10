@@ -164,7 +164,7 @@ class AppComponent extends React.Component {
       nothingMessage = (
         <h3 style={{padding: 16, fontSize: '1.25em'}}>Esta búsqueda no tiene resultados. Por favor seleccione otro
           filtro.</h3>);
-    } else if (rows.length && this.state.length) {
+    } else if (!rows.length && this.state.loading) {
       nothingMessage = (<h3 style={{padding: 16, fontSize: '1.25em'}}>Cargando visualización...</h3>);
     }
 
