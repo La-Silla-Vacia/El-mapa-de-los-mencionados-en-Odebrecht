@@ -60,6 +60,7 @@
       position: relative;
       z-index: 2;
       cursor: pointer;
+      overflow: hidden;
     }
 
     &__column {
@@ -70,6 +71,7 @@
       background: none;
       border: none;
       padding: .75em 1em;
+      position: relative;
       &:first-child {
         padding: 0;
         width: 40%;
@@ -140,6 +142,24 @@
 
     &--open .PersonRow__columns {
       background-color: $hoverColor;
+    }
+
+    &__ribbon {
+      position: absolute;
+      right: 10px;
+      background: $colorprimary;
+      padding: 2px 15px;
+      font-size: .8em;
+      color: #fff;
+      border-radius: 3px;
+      @media screen and (max-width: 695px) {
+        right: inherit;
+        left: 7px;
+        bottom: 2px;
+        padding-top: 0;
+        padding-bottom:0;
+        font-size: .75em;
+      }
     }
 
     &__explainer {

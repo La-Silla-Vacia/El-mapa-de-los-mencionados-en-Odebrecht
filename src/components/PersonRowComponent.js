@@ -32,6 +32,16 @@ class PersonRowComponent extends React.Component {
     let bio = this.props.bio;
     if (!bio) bio = 'Sin definir';
 
+    let ribbon;
+    if (this.props.highlightText) {
+      const highlightText = this.props.highlightText;
+      ribbon = (
+        <div className="PersonRow__ribbon">
+          {highlightText}
+        </div>
+      );
+    }
+
 
     return (
       <div className={cx(
@@ -50,20 +60,12 @@ class PersonRowComponent extends React.Component {
               <h3 className="PersonRow__heading3">{this.props.name}</h3>
             </div>
           </button>
-          {/*<div className="PersonRow__column">*/}
-          {/*<div className="PersonRow__inner-text">*/}
-          {/*<span className="PersonRow__text">{this.props.concreteCase}</span><br />*/}
-          {/*<span className="PersonRow__text">{this.props.concreteCase2}</span>*/}
-          {/*</div>*/}
-          {/*</div>*/}
-          {/*<div className="PersonRow__column">*/}
-            {/*<span className="PersonRow__text">{this.props.mentions}</span>*/}
-          {/*</div>*/}
           <div className="PersonRow__column">
             <span className="PersonRow__text">{this.props.stateOfAttorney}</span>
           </div>
           <div className="PersonRow__column">
             <span className="PersonRow__text">{this.props.importanceOfTalking}</span>
+            {ribbon}
           </div>
         </div>
         <div className={cx(

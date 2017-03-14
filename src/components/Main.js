@@ -69,7 +69,8 @@ class AppComponent extends React.Component {
         scandalRelationship: item.relacionConElEscandalo,
         importanceOfTalking: item.impactoSiHablara,
         whatCouldHappen: item.loQuePodriaPasar,
-        severity: item.gravedad
+        severity: item.gravedad,
+        highlightText: item.highlightText
       };
       newData.push(newItem);
 
