@@ -20,6 +20,7 @@ class AppComponent extends React.Component {
       concreteCases: [],
       importance: [],
       stateOfAttorney: [],
+      currentAtternoyOption: 'Todos',
       concreteCaseFilter: 'Todos',
       importanceFilter: 'Todos',
       stateOfAttorneyFilter: 'Todos'
@@ -149,6 +150,17 @@ class AppComponent extends React.Component {
     this.setState({stateOfAttorneyFilter: result});
   }
 
+  switchAtternoyJuicio(e) {
+    if (e == this.state.stateOfAttorneyFilter) {
+      this.switchAtternoyOption('Todos');
+      this.setState({currentAtternoyOption: 'Todos'});
+      return;
+    }
+    this.switchAtternoyOption(e);
+    this.setState({currentAtternoyOption: e});
+
+  }
+
   render() {
     let error;
     if (this.state.error) {
@@ -189,19 +201,21 @@ class AppComponent extends React.Component {
           <div className="col-sm-7 lsvi_container__select-container">
 
             <ul className="lsvi_container__legend">
-              <li><span className="PersonRow--severity-12"/>En juicio</li>
-              <li><span className="PersonRow--severity-11"/>Principio de oportunidad</li>
-              <li><span className="PersonRow--severity-10"/>Aceptó cargos</li>
-              <li><span className="PersonRow--severity-9"/>Acusado</li>
-              <li><span className="PersonRow--severity-8"/>Imputación</li>
-              <li><span className="PersonRow--severity-7"/>Interrogatorio</li>
-              <li><span className="PersonRow--severity-6"/>Compulsa de copias</li>
-              <li><span className="PersonRow--severity-5"/>Entrevista</li>
-              <li><span className="PersonRow--severity-4"/>Diligencias</li>
-              <li><span className="PersonRow--severity-3"/>Investigación</li>
-              <li><span className="PersonRow--severity-2"/>Indagación preliminar</li>
-              <li><span className="PersonRow--severity-1"/>Declaración</li>
-              <li><span className="PersonRow--severity-"/>Sin datos</li>
+              <li onClick={this.switchAtternoyJuicio.bind(this, 'En juicio')}><span className="PersonRow--severity-12"/>En juicio</li>
+              <li onClick={this.switchAtternoyJuicio.bind(this, 'Principio de oportunidad')}>
+                <span className="PersonRow--severity-11"/>Principio de oportunidad
+              </li>
+              <li onClick={this.switchAtternoyJuicio.bind(this, 'Aceptó cargos')}><span className="PersonRow--severity-10"/>Aceptó cargos</li>
+              <li onClick={this.switchAtternoyJuicio.bind(this, 'Acusado')}><span className="PersonRow--severity-9"/>Acusado</li>
+              <li onClick={this.switchAtternoyJuicio.bind(this, 'Imputación')}><span className="PersonRow--severity-8"/>Imputación</li>
+              <li onClick={this.switchAtternoyJuicio.bind(this, 'Interrogatorio')}><span className="PersonRow--severity-7"/>Interrogatorio</li>
+              <li onClick={this.switchAtternoyJuicio.bind(this, 'Compulsa de copias')}><span className="PersonRow--severity-6"/>Compulsa de copias</li>
+              <li onClick={this.switchAtternoyJuicio.bind(this, 'Entrevista')}><span className="PersonRow--severity-5"/>Entrevista</li>
+              <li onClick={this.switchAtternoyJuicio.bind(this, 'Diligencias')}><span className="PersonRow--severity-4"/>Diligencias</li>
+              <li onClick={this.switchAtternoyJuicio.bind(this, 'Investigación')}><span className="PersonRow--severity-3"/>Investigación</li>
+              <li onClick={this.switchAtternoyJuicio.bind(this, 'Indagación preliminar')}><span className="PersonRow--severity-2"/>Indagación preliminar</li>
+              <li onClick={this.switchAtternoyJuicio.bind(this, 'Declaración')}><span className="PersonRow--severity-1"/>Declaración</li>
+              <li onClick={this.switchAtternoyJuicio.bind(this, 'Sin datos')}><span className="PersonRow--severity-"/>Sin datos</li>
             </ul>
           </div>
           <div className="col-sm-12">
@@ -219,9 +233,10 @@ class AppComponent extends React.Component {
               <small>Filtre por estado de su proceso</small>
               <Select
                 className="Select"
-                value="Todos"
+                value={this.state.currentAtternoyOption}
                 callback={this.switchAtternoyOption}
                 options={this.state.stateOfAttorney}
+                switchTo={this.state.currentAtternoyOption}
               />
             </div>
 

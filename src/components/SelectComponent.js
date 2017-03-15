@@ -59,6 +59,9 @@ class SelectComponent extends React.Component {
   }
 
   componentWillReceiveProps(newprops) {
+    if (newprops.switchTo !== this.props.switchTo) {
+      this.handleClick(newprops.switchTo);
+    }
     if (newprops.options.length > this.state.options.length) {
       this.setState({options: newprops.options});
     }
