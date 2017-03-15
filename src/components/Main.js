@@ -21,6 +21,8 @@ class AppComponent extends React.Component {
       importance: [],
       stateOfAttorney: [],
       currentAtternoyOption: 'Todos',
+      currentConcreteCaseOption: 'Todos',
+      currentImportanceOption: 'Todos',
       concreteCaseFilter: 'Todos',
       importanceFilter: 'Todos',
       stateOfAttorneyFilter: 'Todos'
@@ -139,15 +141,15 @@ class AppComponent extends React.Component {
   }
 
   switchOption(result) {
-    this.setState({concreteCaseFilter: result});
+    this.setState({concreteCaseFilter: result, currentConcreteCaseOption: result});
   }
 
   switchImportanceOption(result) {
-    this.setState({importanceFilter: result});
+    this.setState({importanceFilter: result, currentImportanceOption: result});
   }
 
   switchAtternoyOption(result) {
-    this.setState({stateOfAttorneyFilter: result});
+    this.setState({stateOfAttorneyFilter: result, currentAtternoyOption: result});
   }
 
   switchAtternoyJuicio(e) {
@@ -158,7 +160,17 @@ class AppComponent extends React.Component {
     }
     this.switchAtternoyOption(e);
     this.setState({currentAtternoyOption: e});
+  }
 
+  resetView() {
+    this.setState({
+      concreteCaseFilter: 'Todos',
+      importanceFilter: 'Todos',
+      stateOfAttorneyFilter: 'Todos',
+      currentConcreteCaseOption: 'Todos',
+      currentImportanceOption: 'Todos',
+      currentAtternoyOption: 'Todos'
+    });
   }
 
   render() {
@@ -193,32 +205,61 @@ class AppComponent extends React.Component {
               <h2>Todos los<br />
                 involucrados</h2>
 
-              <p>Estas son todas las personas que han sido mencionadas en el escándalo, desde quienes ya aceptaron cargos hasta los que solo han sido mencionados. El color de la foto muestra la gravedad de su estado ante la justicia.<br />
-                Puede hacer clic en cada persona para conocer más datos, y usar los filtros para ver solo parte de la información.</p>
+              <p>Estas son todas las personas que han sido mencionadas en el escándalo, desde quienes ya aceptaron
+                cargos hasta los que solo han sido mencionados. El color de la foto muestra la gravedad de su estado
+                ante la justicia.<br />
+                Puede hacer clic en cada persona para conocer más datos, y usar los filtros para ver solo parte de la
+                información.</p>
             </div>
           </div>
 
           <div className="col-sm-7 lsvi_container__select-container">
 
             <ul className="lsvi_container__legend">
-              <li onClick={this.switchAtternoyJuicio.bind(this, 'En juicio')}><span className="PersonRow--severity-12"/>En juicio</li>
+              <li onClick={this.switchAtternoyJuicio.bind(this, 'En juicio')}><span className="PersonRow--severity-12"/>En
+                juicio
+              </li>
               <li onClick={this.switchAtternoyJuicio.bind(this, 'Principio de oportunidad')}>
                 <span className="PersonRow--severity-11"/>Principio de oportunidad
               </li>
-              <li onClick={this.switchAtternoyJuicio.bind(this, 'Aceptó cargos')}><span className="PersonRow--severity-10"/>Aceptó cargos</li>
-              <li onClick={this.switchAtternoyJuicio.bind(this, 'Acusado')}><span className="PersonRow--severity-9"/>Acusado</li>
-              <li onClick={this.switchAtternoyJuicio.bind(this, 'Imputación')}><span className="PersonRow--severity-8"/>Imputación</li>
-              <li onClick={this.switchAtternoyJuicio.bind(this, 'Interrogatorio')}><span className="PersonRow--severity-7"/>Interrogatorio</li>
-              <li onClick={this.switchAtternoyJuicio.bind(this, 'Compulsa de copias')}><span className="PersonRow--severity-6"/>Compulsa de copias</li>
-              <li onClick={this.switchAtternoyJuicio.bind(this, 'Entrevista')}><span className="PersonRow--severity-5"/>Entrevista</li>
-              <li onClick={this.switchAtternoyJuicio.bind(this, 'Diligencias')}><span className="PersonRow--severity-4"/>Diligencias</li>
-              <li onClick={this.switchAtternoyJuicio.bind(this, 'Investigación')}><span className="PersonRow--severity-3"/>Investigación</li>
-              <li onClick={this.switchAtternoyJuicio.bind(this, 'Indagación preliminar')}><span className="PersonRow--severity-2"/>Indagación preliminar</li>
-              <li onClick={this.switchAtternoyJuicio.bind(this, 'Declaración')}><span className="PersonRow--severity-1"/>Declaración</li>
-              <li onClick={this.switchAtternoyJuicio.bind(this, 'Sin datos')}><span className="PersonRow--severity-"/>Sin datos</li>
+              <li onClick={this.switchAtternoyJuicio.bind(this, 'Aceptó cargos')}><span
+                className="PersonRow--severity-10"/>Aceptó cargos
+              </li>
+              <li onClick={this.switchAtternoyJuicio.bind(this, 'Acusado')}><span className="PersonRow--severity-9"/>Acusado
+              </li>
+              <li onClick={this.switchAtternoyJuicio.bind(this, 'Imputación')}><span className="PersonRow--severity-8"/>Imputación
+              </li>
+              <li onClick={this.switchAtternoyJuicio.bind(this, 'Interrogatorio')}><span
+                className="PersonRow--severity-7"/>Interrogatorio
+              </li>
+              <li onClick={this.switchAtternoyJuicio.bind(this, 'Compulsa de copias')}><span
+                className="PersonRow--severity-6"/>Compulsa de copias
+              </li>
+              <li onClick={this.switchAtternoyJuicio.bind(this, 'Entrevista')}><span className="PersonRow--severity-5"/>Entrevista
+              </li>
+              <li onClick={this.switchAtternoyJuicio.bind(this, 'Diligencias')}><span
+                className="PersonRow--severity-4"/>Diligencias
+              </li>
+              <li onClick={this.switchAtternoyJuicio.bind(this, 'Investigación')}><span
+                className="PersonRow--severity-3"/>Investigación
+              </li>
+              <li onClick={this.switchAtternoyJuicio.bind(this, 'Indagación preliminar')}><span
+                className="PersonRow--severity-2"/>Indagación preliminar
+              </li>
+              <li onClick={this.switchAtternoyJuicio.bind(this, 'Declaración')}><span
+                className="PersonRow--severity-1"/>Declaración
+              </li>
+              <li onClick={this.switchAtternoyJuicio.bind(this, 'Sin datos')}><span className="PersonRow--severity-"/>Sin
+                datos
+              </li>
             </ul>
           </div>
           <div className="col-sm-12">
+            <div className="row">
+              <div className="pull-right">
+                <button className="btn lsvi_container__resetbtn" onClick={this.resetView.bind(this)}>Resetear vista</button>
+              </div>
+            </div>
             <div className="lsvi_container__select col-sm-4">
               <small>Filtre por caso concreto</small>
               <Select
@@ -226,6 +267,7 @@ class AppComponent extends React.Component {
                 value="Todos"
                 callback={this.switchOption}
                 options={this.state.concreteCases}
+                switchTo={this.state.currentConcreteCaseOption}
               />
             </div>
 
@@ -247,6 +289,7 @@ class AppComponent extends React.Component {
                 value="Todos"
                 callback={this.switchImportanceOption}
                 options={this.state.importance}
+                switchTo={this.state.currentImportanceOption}
               />
             </div>
           </div>

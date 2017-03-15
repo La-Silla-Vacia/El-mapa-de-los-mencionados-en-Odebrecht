@@ -76,6 +76,13 @@
       }
     }
 
+    &__resetbtn {
+      background-color: transparent;
+      border: 1px solid currentColor;
+      padding: 2px 5px;
+      color: #bbb;
+    }
+
     &__title {
       font-family: Georgia, serif;
       text-transform: none;
@@ -90,7 +97,7 @@
 
     &__select {
       float: left;
-      margin-top: 1.5em;
+      margin-top: .25em;
       margin-bottom: .5em;
       text-align: left;
       position: relative;
