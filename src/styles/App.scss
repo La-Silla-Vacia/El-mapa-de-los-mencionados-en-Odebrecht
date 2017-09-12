@@ -116,10 +116,6 @@
           //padding-left: 0;
         }
       }
-      @media screen and (max-width: 500px) {
-        margin-top: .1em;
-        margin-bottom: .1em;
-      }
     }
 
     &__selects {
@@ -150,10 +146,6 @@
       .PersonRow__columns {
         cursor: default;
       }
-
-      @media screen and (max-width: 500px) {
-        margin-top: .5em;
-      }
     }
 
     .Select {
@@ -163,10 +155,6 @@
       margin: 0;
       width: calc(100% - 2em);
       background-color: #fff;
-
-      @media screen and (max-width: 500px) {
-        width: 230px;
-      }
     }
 
     .Select__open {
@@ -174,13 +162,3 @@
     }
   }
 }
-
-.ListScroll{
-  height: 500px;
-  overflow: scroll;
-
-  @media screen and (max-width: 960px) {
-    height: 330px;
-  }
-}
-
