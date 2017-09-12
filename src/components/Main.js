@@ -312,10 +312,8 @@ class AppComponent extends React.Component {
           </div>
         </div>
 
-        <div className="ListScroll">
-          {nothingMessage}
-          {rows}
-        </div>
+        {nothingMessage}
+        {rows}
       </div>
     );
   }
